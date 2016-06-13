@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>show product</h1>
+  <ul class="list-unstyled list-group">
+    <li class="list-group-item">ID: <%= @product.id %></li>
+    <li class="list-group-item">Name: <%= @product.name %></li>
+    <li class="list-group-item">Description: <%= @product.description %></li>
+    <li class="list-group-item">Pricing: <%= @product.pricing %></li>
+    <li class="list-group-item">
+      <ul class="list-inline">
+        <li>
+          <a href="/products" class="btn btn-success">Back</a>
+        </li>
+        <li>
+          <a href="/products/<%= @product.id %>/edit" class="btn btn-success">Edit</a>
+        </li>
+        <li>
+          <form action="/products/<%= @product.id%>" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Destroy" class="btn btn-danger">
+          </form>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

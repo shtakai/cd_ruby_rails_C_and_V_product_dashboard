@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'products' => 'products#index'
+  post 'products/create' => 'products#create'
+  get 'products/new' => 'products#new'
+  get 'products/:id/edit' => 'products#edit'
+  get 'products/:id' => 'products#show'
+  patch 'products/:id' => 'products#update'
+  delete 'products/:id' => 'products#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

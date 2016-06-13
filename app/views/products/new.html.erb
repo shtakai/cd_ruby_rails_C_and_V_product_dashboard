@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>new product</h1>
+
+  <form action="/products/create" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input name="product[name]" type="text" class="form-control" id="name" placeholder="Product Name" value="<%= @product.name%>">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" rows="3" name="product[description]" placeholder="Product Description" value="<%= @product.description %>"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="pricing">Pricing</label>
+      <input class="form-control" name="product[pricing]" placeholder="Product Pricing" value="<%= @product.pricing %>"></input>
+    </div>
+
+    <button type="submit" class="btn btn-default" class="btn btn-success">Create Product</button>
+    <a href="/products" class="btn btn-success">Back</a>
+  </form>
+
+</div>

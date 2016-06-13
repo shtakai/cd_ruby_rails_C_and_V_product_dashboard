@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>index</h1>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>description</th>
+        <th>pricing</th>
+        <th>action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td>
+            <a href="/products/<%= product.id %>">
+              <%= product.id%>
+            </a>
+          </td>
+          <td><%= product.name%></td>
+          <td><%= product.description%></td>
+          <td><%= product.pricing%></td>
+          <td>
+            <ul class="list-inline">
+              <li>
+                <a href="/products/<%= product.id %>" class="btn btn-success">
+                  Show
+                </a>
+              </li>
+              <li>
+                <a href="/products/<%= product.id %>/edit" class="btn btn-success">
+                  Edit
+                </a>
+              </li>
+              <li>
+                <form action="/products/<%= product.id%>" method="POST">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="submit" value="Destroy" class="btn btn-danger">
+                </form>
+              </li>
+            </ul>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </tbody>
+  </table>
+  <a href="/products/new" class="btn btn-success">Create New Product</a>
+</div>
