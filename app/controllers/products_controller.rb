@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # TODO: Consider with local timezeone
+    @comments = Comment.order(created_at: :asc)
+    @comment = Comment.new
   end
 
   def new
