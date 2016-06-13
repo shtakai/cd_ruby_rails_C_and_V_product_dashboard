@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>All Comments</h1>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Comment</th>
+        <th>Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.comment%></td>
+          <td><%= comment.product.name if comment.product %></td>
+          </td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+  <a href="/products" class="btn btn-success">Back</a>
+</div>
