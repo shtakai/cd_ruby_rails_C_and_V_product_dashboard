@@ -4,4 +4,5 @@ class Product < ActiveRecord::Base
   validates :pricing, numericality: {greater_than: 0.00}
 
   belongs_to :category
+  has_many :comments
 end
