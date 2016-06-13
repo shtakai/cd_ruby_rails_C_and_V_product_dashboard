@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :product, only: [:show, :edit, :update, :destroy]
+  before_action :categories, only: [:edit, :new, :edit]
 
   def index
     @products = Product.all
@@ -18,6 +19,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "created product #{@product.name}"
       redirect_to "/products/#{@product.id}"
     else
+      categories
       flash[:alert] = @product.errors
       render 'products/new'
     end
@@ -50,12 +52,15 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :pricing)
+    params.require(:product).permit(:name, :description, :pricing, :category_id)
   end
 
   def product
     @product = Product.find_by_id(params[:id])
   end
 
+  def categories
+    @categories = Category.select(:id, :name)
+  end
 
 end
